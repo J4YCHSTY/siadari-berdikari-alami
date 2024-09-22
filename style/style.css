@@ -18,6 +18,10 @@
 
 .business-home {
     background-image: url("../image/home.png");
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    position: relative;
 }
 
 .nav-sticky.navbar-custom {
@@ -28,7 +32,7 @@
 }
 
 .nav-sticky .navbar-nav .nav-item .nav-link {
-    color: #FFFF !important;
+    color: white !important;
 }
 
 .footer {
@@ -102,5 +106,20 @@
     opacity: 0.9;
     background-color: black;
 }
+
+/* responsive */
+
+@media only screen and (max-width: 600px) {
+
+    #navbar {
+        background-color: #136810;
+    }
+
+    .nav-sticky.navbar-custom {
+        background-color: #136810;
+        box-shadow: 0px 3px 10px 0px rgba(255, 255, 255, 0.08);
+    }
+}
+
 
 
