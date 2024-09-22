@@ -149,3 +149,9 @@ body{
     background: #136810;
     color: #fff;
 }
+
+.swiper {
+    width: 600px;
+    height: 300px;
+  }
+  
