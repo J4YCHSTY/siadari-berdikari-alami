@@ -8,6 +8,10 @@
 
 /* CUSTOM */
 
+:root {
+    --text-color: #136810;
+}
+
 *, html {
     scroll-behavior: smooth !important;
 }
@@ -99,13 +103,53 @@
     transition: all .2s linear;
 }
 
-.business-services {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 1)), url("https://w.wallhaven.cc/full/8o/wallhaven-8o7lqo.jpg");
-    background-size: cover;
-    color: white;
-    opacity: 0.9;
-    background-color: black;
+.submitBtn {
+    color: #136810;
+    background-color: white;
+    border: 1px solid var(--text-color) !important;
 }
+
+.submitBtn:hover {
+    background-color: var(--text-color) !important;
+    color: white;
+}
+
+.business-services {
+    color: white;
+    background-color: var(--text-color);
+}
+
+.terms-about {
+    background-color: var(--text-color);
+}
+
+.terms-title {
+    color: white;
+}
+
+#card-terms {
+    background-color: var(--text-color);
+    color: white !important;
+    
+}
+
+.product-tabs {
+    color: var(--text-color);
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--text-color) !important;
+}
+
+.product-tabs:hover {
+    background-color: var(--text-color) !important;
+    color: white !important;
+}
+
+.card-title {
+    background-color: var(--text-color);
+}
+
 
 /* responsive */
 

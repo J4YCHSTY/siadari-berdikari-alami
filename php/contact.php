@@ -1,66 +1,57 @@
 <?php
 
-if(!$_POST) exit;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-function isEmail($email) {
-	return(preg_match("/^[-_.[:alnum:]]+@((([[:alnum:]]|[[:alnum:]][[:alnum:]-]*[[:alnum:]])\.)+(ad|ae|aero|af|ag|ai|al|am|an|ao|aq|ar|arpa|as|at|au|aw|az|ba|bb|bd|be|bf|bg|bh|bi|biz|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|com|coop|cr|cs|cu|cv|cx|cy|cz|de|dj|dk|dm|do|dz|ec|edu|ee|eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gh|gi|gl|gm|gn|gov|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|in|info|int|io|iq|ir|is|it|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|mg|mh|mil|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|museum|mv|mw|mx|my|mz|na|name|nc|ne|net|nf|ng|ni|nl|no|np|nr|nt|nu|nz|om|org|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|pro|ps|pt|pw|py|qa|re|ro|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|um|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)$|(([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\.){3}([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5]))$/i",$email));
+require 'vendor/autoload.php';  // Use the correct path if installed manually
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    exit('Invalid request');
 }
 
-if (!defined("PHP_EOL")) define("PHP_EOL", "\r\n");
+// Sanitize input
+$name     = htmlspecialchars(trim($_POST['name']));
+$email    = htmlspecialchars(trim($_POST['email']));
+$comments = htmlspecialchars(trim($_POST['comments']));
 
-$name     = $_POST['name'];
-$email    = $_POST['email'];
-$comments = $_POST['comments'];
-
-if(trim($name) == '') {
-	echo '<div class="error_message">You must enter your name.</div>';
-	exit();
-} else if(trim($email) == '') {
-	echo '<div class="error_message">Please enter a valid email address.</div>';
-	exit();
-} else if(!isEmail($email)) {
-	echo '<div class="error_message">You have entered an invalid e-mail address. Please try again.</div>';
-	exit();
+// Validate input
+if (empty($name)) {
+    exit('<div class="error_message">You must enter your name.</div>');
+}
+if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    exit('<div class="error_message">Please enter a valid email address.</div>');
+}
+if (empty($comments)) {
+    exit('<div class="error_message">Please enter your message.</div>');
 }
 
-if(trim($comments) == '') {
-	echo '<div class="error_message">Please enter your message.</div>';
-	exit();
+$mail = new PHPMailer(true);
+
+try {
+    // SMTP settings
+    $mail->isSMTP();                                        // Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                   // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                               // Enable SMTP authentication
+    $mail->Username   = 'your_email@gmail.com';             // SMTP username
+    $mail->Password   = 'your_email_password';              // SMTP password (use an app password if using Gmail)
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;     // Enable TLS encryption; PHPMailer::ENCRYPTION_SMTPS for SSL
+    $mail->Port       = 587;                                // TCP port to connect to (587 for TLS)
+
+    // Email content
+    $mail->setFrom($email, $name);
+    $mail->addAddress('recipient_email@example.com');       // Add recipient address
+
+    $mail->isHTML(true);                                    // Set email format to HTML
+    $mail->Subject = 'Contact Form Submission from ' . $name;
+    $mail->Body    = "You have been contacted by <b>$name</b>.<br><br>" . 
+                     "Message: <br>" . nl2br($comments) . "<br><br>" . 
+                     "You can reply to this email at $email.";
+    $mail->AltBody = "You have been contacted by $name. Message: $comments. Reply to $email.";
+
+    $mail->send();
+    echo "<div class='success_message'>Thank you, $name. Your message has been sent.</div>";
+} catch (Exception $e) {
+    echo "<div class='error_message'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
 }
 
-if(get_magic_quotes_gpc()) {
-	$comments = stripslashes($comments);
-}
-
-// info@siadariberdikarialami.com
-
-$address = "jaychristy05@gmail.com";
-
-$e_subject = 'You have been contacted by ' . $name . '.';
-
-$e_body = "You have been contacted by $name. Their additional message is as follows." . PHP_EOL . PHP_EOL;
-$e_content = "\"$comments\"" . PHP_EOL . PHP_EOL;
-$e_reply = "You can contact $name via email, $email";
-
-$msg = wordwrap( $e_body . $e_content . $e_reply, 70 );
-
-$headers = "From: $email" . PHP_EOL;
-$headers .= "Reply-To: $email" . PHP_EOL;
-$headers .= "MIME-Version: 1.0" . PHP_EOL;
-$headers .= "Content-type: text/plain; charset=utf-8" . PHP_EOL;
-$headers .= "Content-Transfer-Encoding: quoted-printable" . PHP_EOL;
-
-if(mail($address, $e_subject, $msg, $headers)) {
-
-	echo "<fieldset>";
-	echo "<div id='success_page'>";
-	echo "<h3>Email Sent Successfully.</h3>";
-	echo "<p>Thank you <strong>$name</strong>, your message has been submitted to us.</p>";
-	echo "</div>";
-	echo "</fieldset>";
-
-} else {
-
-	echo 'ERROR!';
-
-}
+?>
