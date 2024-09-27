@@ -128,8 +128,8 @@
 }
 
 #card-terms {
-    background-color: var(--text-color);
-    color: white !important;
+    background-color: white !important;
+    color: var(--text-color) !important;
     
 }
 
