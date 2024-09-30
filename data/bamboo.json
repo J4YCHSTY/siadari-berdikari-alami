@@ -1,7 +1,8 @@
 [
     {
         "id": 1,
-        "name": "BB-01TH KERANJANG HANDLES BAMBOO BASKET",
+        "name": "KERANJANG HANDLES BAMBOO BASKET",
+        "code": "BB-01TH",
         "image": "image/produk/bambu/produk2.png",
         "image1": "image/produk/bambu/produk2-1.png",
         "Material": "Bamboo",
@@ -9,10 +10,11 @@
         "Description": "Simple bamboo basket  with multiple purpose Simple bamboo basket with many uses can be as room decor, laundry basket, stuff organizer, plant pots.",
         "Dimension": "TBA"
     },
-    
+
     {
         "id": 2,
-        "name": "BB-01S STANDARD BAMBOO BASKET",
+        "name": "STANDARD BAMBOO BASKET",
+        "code": "BB-01S",
         "image": "image/produk/bambu/produk3.png",
         "image1": "image/produk/bambu/produk3-1.png",
         "Material": "Bamboo",
@@ -23,7 +25,8 @@
 
     {
         "id": 3,
-        "name": "BB-01L LIDDED BAMBU BASKET",
+        "name": "LIDDED BAMBU BASKET",
+        "code": "BB-01L",
         "image": "image/produk/bambu/produk4.png",
         "image1": "image/produk/bambu/produk4-1.png",
         "Material": "Bamboo",
