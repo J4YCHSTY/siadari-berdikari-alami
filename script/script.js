@@ -16,8 +16,14 @@ function addDataToHTML() {
         newProduct.href = '/detail.html?id=' + bamboo.id;
         newProduct.classList.add('item');
         newProduct.innerHTML = `
-        <img src="${bamboo.image}" alt="">
-        <h2>${bamboo.name}</h2>`;
+        <img src="${bamboo.image}" class="w-100" />
+        <a href="#!">
+        <div class="card-title">
+            <div class="d-flex justify-content-start align-items-start h-100">
+            <h5><span class="badge bg-body-tertiary pt-2 ms-3 mt-3 text-light">${bamboo.name}</span></h5>
+            </div>
+        </div>
+        </a>`;
 
         listProduct.appendChild(newProduct);
     })
