@@ -1,13 +1,14 @@
 <?php
-
+require '../vendor/autoload.php';  // Sesuaikan dengan lokasi file autoload.php relatif ke contact.php
+header("Access-Control-Allow-Origin: *");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-require 'vendor/autoload.php';  // Use the correct path if installed manually
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit('Invalid request');
 }
+
+
 
 // Sanitize input
 $name     = htmlspecialchars(trim($_POST['name']));
@@ -33,13 +34,13 @@ try {
     $mail->Host       = 'smtp.gmail.com';                   // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                               // Enable SMTP authentication
     $mail->Username   = 'smtpserver830@gmail.com';             // SMTP username
-    $mail->Password   = ${{ secrets.APP_PASSWORD }};              // SMTP password (use an app password if using Gmail)
+    $mail->Password   = 'lboqgvpwrqlhxzbd';              // SMTP password (use an app password if using Gmail)
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;     // Enable TLS encryption; PHPMailer::ENCRYPTION_SMTPS for SSL
     $mail->Port       = 587;                                // TCP port to connect to (587 for TLS)
 
     // Email content
     $mail->setFrom($email, $name);
-    $mail->addAddress('smtpserver830@example.com');       // Add recipient address
+    $mail->addAddress("jaychristy05@gmail.com");       // Add recipient address
 
     $mail->isHTML(true);                                    // Set email format to HTML
     $mail->Subject = 'Contact Form Submission from ' . $name;
@@ -52,6 +53,7 @@ try {
     echo "<div class='success_message'>Thank you, $name. Your message has been sent.</div>";
 } catch (Exception $e) {
     echo "<div class='error_message'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
+    error_log($mail->ErrorInfo);
 }
 
 ?>

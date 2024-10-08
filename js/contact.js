@@ -3,7 +3,8 @@
 //
 
 
-function validateForm() {
+function validateForm(event) {
+    event.preventDefault();
     var name = document.forms["myForm"]["name"].value;
     var email = document.forms["myForm"]["email"].value;
     var comments = document.forms["myForm"]["comments"].value;
@@ -25,6 +26,8 @@ function validateForm() {
         return false;
     }
 
+    console.log("Name: " + name + ", Email: " + email + ", Comments: " + comments);
+
     // Send AJAX request to PHP
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -40,6 +43,7 @@ function validateForm() {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("name=" + name + "&email=" + email + "&comments=" + comments);
     return false;  // Prevent form submission
+    
 }
 
 function showError(message) {
@@ -59,3 +63,5 @@ function fadeIn() {
         }
     }, 200);
 }
+
+
