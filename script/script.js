@@ -12,21 +12,26 @@ let listProduct =  document.querySelector('.listProduct');
 function addDataToHTML() {
 
     bamboo.forEach(bamboo => {
-        let newProduct = document.createElement('a');
+        let newProduct = document.createElement('div');
+        newProduct.classList.add('col-lg-4', 'col-md-12', 'mb-4');
         newProduct.href = '/detail.html?id=' + bamboo.id;
         newProduct.classList.add('item');
         newProduct.innerHTML = `
-        <img src="${bamboo.image}" class="w-100" />
-        <a href="#!">
-        <div class="card-title">
-            <div class="d-flex justify-content-start align-items-start h-100">
-            <h5><span class="badge bg-body-tertiary pt-2 ms-3 mt-3 text-light">${bamboo.name}</span></h5>
-            </div>
-        </div>
-        </a>`;
+        <div class="bg-image hover-zoom ripple shadow-1-strong rounded listProduct">
+            <img src="${bamboo.image}" class="w-100" />
+            <a href="#">
+                <div class="card-title">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <h5><span class="badge bg-body-tertiary pt-2 mt-3 text-light">${bamboo.name}</span></h5>
+                </div>
+                </div>
+            </a>
+        </div>`;
 
         listProduct.appendChild(newProduct);
     })
+
+    
 }
 
 let pandan = null;
