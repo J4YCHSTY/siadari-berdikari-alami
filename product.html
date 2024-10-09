@@ -49,11 +49,36 @@
         </div>
     </nav>
     
-    <section class="detail-product pb-5 mt-5">
-        <div class="container">
-            <h1 class="title text-center heading-title-title letter-spacing_4 text-uppercase">LIST PRODUCT</h1>
-            <div class="row mt-4 g-4 listProduct">
-                
+    <section class="product-detail pb-5 mt-5" style="">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-5 align-self-center mr-5">
+                    <img id="product-image" src="" alt="Product Image" class="img-fluid shadow-lg" style="max-width: 100%; border-radius: 8px;" />
+                </div>
+                <div class="col-md-6 ml-5">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>Style Number</th>
+                            <td id="style-number"></td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td id="description"></td>
+                        </tr>
+                        <tr>
+                            <th>Dimension</th>
+                            <td id="dimension"></td>
+                        </tr>
+                        <tr>
+                            <th>Material</th>
+                            <td id="material"></td>
+                        </tr>
+                        <tr>
+                            <th>Color</th>
+                            <td id="color"></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
@@ -85,7 +110,7 @@
     </footer>
 
 
-    <script src="script/script.js"></script>
+    <script src="js/product.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
 </body>

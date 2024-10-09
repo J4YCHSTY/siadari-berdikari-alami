@@ -162,7 +162,46 @@
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+
+table {
+    border: 1px solid black;
+}
+
+table th {
+    background-color: var(--text-color) !important;
+    color: white;
+}
+
+table.table {
+    font-size: 1.2rem;
+    width: 100%;  
+    margin-top: 20px;  
+}
+
+
+img#product-image {
+    max-width: 100%;  
+    height: auto;    
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  
+}
+
+
+.row.justify-content-center {
+    margin-top: 40px;  
+}
+
 /* responsive */
+
+@media (max-width: 768px) {
+    table.table {
+        font-size: 1rem;  /* Mengurangi ukuran teks pada perangkat kecil */
+    }
+    img#product-image {
+        max-width: 100%;  /* Gambar menyesuaikan lebar layar */
+    }
+}
+
 
 @media only screen and (max-width: 600px) {
 

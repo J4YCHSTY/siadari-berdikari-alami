@@ -18,10 +18,11 @@ function displayProductList(products) {
 
     products.forEach(product => {
         let productCard = `
-            <div class="col-lg-4 col-md-12 mb-4">
+            <div class="col-lg-4 col-md-12 mb-4 card-product">
                 <div class="bg-image hover-zoom ripple shadow-1-strong rounded listProduct">
                     <img src="${product.image}" class="w-100" />
-                    <a href="#">
+                    <!-- Tambahkan href dengan parameter id dan category -->
+                    <a href="product.html?id=${product.id}&category=${category}">
                         <div class="card-title">
                             <div class="d-flex justify-content-center align-items-center h-100">
                                 <h5><span class="badge bg-body-tertiary pt-2 mt-3 text-light">${product.name}</span></h5>
