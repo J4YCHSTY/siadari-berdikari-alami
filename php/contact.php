@@ -40,7 +40,7 @@ try {
 
     // Email content
     $mail->setFrom($email, $name);
-    $mail->addAddress("jaychristy05@gmail.com");       // Add recipient address
+    $mail->addAddress($email);       // Add recipient address
 
     $mail->isHTML(true);                                    // Set email format to HTML
     $mail->Subject = 'Contact Form Submission from ' . $name;
