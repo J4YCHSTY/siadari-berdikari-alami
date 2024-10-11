@@ -172,6 +172,11 @@ table th {
     color: white;
 }
 
+#style-number, #description, #dimension, #material, #color {
+    background-color: white !important;
+    color: var(--text-color);
+}   
+
 table.table {
     font-size: 1.2rem;
     width: 100%;  
