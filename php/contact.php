@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Sanitize input
 $name     = htmlspecialchars(trim($_POST['name']));
 $email    = htmlspecialchars(trim($_POST['email']));
+$number   = htmlspecialchars(trim($_POST['number']));
 $comments = htmlspecialchars(trim($_POST['comments']));
 
 // Validate input
@@ -34,19 +35,19 @@ try {
     $mail->Host       = 'smtp.gmail.com';                   // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                               // Enable SMTP authentication
     $mail->Username   = 'smtpserver830@gmail.com';             // SMTP username
-    $mail->Password   = '${{secret.APP_PASSWORD}}';              // SMTP password (use an app password if using Gmail)
+    $mail->Password   = 'lboqgvpwrqlhxzbd';              // SMTP password (use an app password if using Gmail)
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;     // Enable TLS encryption; PHPMailer::ENCRYPTION_SMTPS for SSL
     $mail->Port       = 587;                                // TCP port to connect to (587 for TLS)
 
     // Email content
-    $mail->setFrom($email, $name);
+    $mail->setFrom($email, $name, $number);
     $mail->addAddress($email);       // Add recipient address
 
     $mail->isHTML(true);                                    // Set email format to HTML
     $mail->Subject = 'Contact Form Submission from ' . $name;
     $mail->Body    = "You have been contacted by <b>$name</b>.<br><br>" . 
                      "Message: <br>" . nl2br($comments) . "<br><br>" . 
-                     "You can reply to this email at $email.";
+                     "You can reply to this email at $email or this number $number.";
     $mail->AltBody = "You have been contacted by $name. Message: $comments. Reply to $email.";
 
     $mail->send();
