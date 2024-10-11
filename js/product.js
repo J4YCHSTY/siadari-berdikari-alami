@@ -19,16 +19,23 @@ function fetchProductDetails() {
 
 function displayProductDetails(product) {
     const productImage = document.querySelector('#product-image');
-    let images = [product.image, product.image1]; 
+    
+    let images = [product.image, product.image1, product.image2, product.image3, product.image4, product.image5, product.image6, product.image7, product.image8].filter(image => image); 
+    
     let currentImageIndex = 0;  
 
-    
-    setInterval(() => {
-        currentImageIndex = (currentImageIndex + 1) % images.length;  
-        productImage.src = images[currentImageIndex];  
-    }, 3000);  
+    if (images.length > 0) {
+        
+        setInterval(() => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;  
+            productImage.src = images[currentImageIndex];  
+        }, 3000);  
+    }
 
-    document.querySelector('#product-image').src = product.image;
+    
+    productImage.src = images[0];
+
+
     document.querySelector('#style-number').innerText = product.code;
     document.querySelector('#description').innerText = product.Description;
     document.querySelector('#dimension').innerText = product.Dimension;
