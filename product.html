@@ -52,8 +52,10 @@
     <section class="product-detail pb-5 mt-5">
         <div class="container my-5">
             <div class="row justify-content-between g-5 mt-5">
-                <div class="col-md-5 align-self-center mb-4">
-                    <img id="product-image" src="" alt="Product Image" class="img-fluid shadow-lg h-100 w-100" style="max-width: 100%; border-radius: 8px;" />
+                <div class="col-md-6 align-self-center product-image-container">
+                    <img id="product-image" class="img-fluid" src="" alt="Product Image">
+                    <button id="prevBtn" class="nav-button">&lt;</button>
+                    <button id="nextBtn" class="nav-button">&gt;</button>
                 </div>
                 <div class="col-md-6 product-info">
                     <table class="table table-bordered">
@@ -88,6 +90,14 @@
                             <th id="color"></th>
                         </tr>
                     </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <span class="close" data-bs-dismiss="modal">&times;</span>
+                    <img class="modal-body img-fluid" id="modalImage" src="">
                 </div>
             </div>
         </div>

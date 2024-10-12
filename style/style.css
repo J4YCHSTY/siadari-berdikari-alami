@@ -196,6 +196,67 @@ img#product-image {
     margin-top: 40px;  
 }
 
+.product-image-container {
+    position: relative;
+    text-align: center;
+    max-width: 100%; 
+    margin: auto; 
+}
+
+#product-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid var(--text-color) !important;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 10%;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: var(--text-color);
+    color: white;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+/* Modal Image CSS */
+.modal-content {
+    width: 100%;
+    max-width: 700px;
+}
+
+.close {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+}
+
 /* responsive */
 
 @media (max-width: 768px) {
