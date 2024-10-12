@@ -431,7 +431,7 @@ button:focus {
 }
 .navbar-custom .navbar-collapse .navbar-nav .nav-item .nav-link {
   line-height: 26px;
-  font-size: 12px;
+  font-size: 11px;
   margin: 0 15px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
