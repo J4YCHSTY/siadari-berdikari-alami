@@ -19,17 +19,16 @@ function displayProductList(products) {
     products.forEach(product => {
         let productCard = `
             <div class="col-lg-4 col-md-12 mb-4 card-product">
-                <div class="bg-image hover-zoom ripple shadow-1-strong rounded listProduct">
-                    <img src="${product.image}" class="w-100" />
-                    <!-- Tambahkan href dengan parameter id dan category -->
-                    <a href="product.html?id=${product.id}&category=${category}">
+                <a href="product.html?id=${product.id}&category=${category}">
+                    <div class="bg-image hover-zoom ripple shadow-1-strong rounded listProduct">
+                        <img src="${product.image}" class="w-100" />
                         <div class="card-title">
                             <div class="d-flex justify-content-center align-items-center h-100">
                                 <h5><span class="badge bg-body-tertiary pt-2 mt-3 text-light">${product.name}</span></h5>
                             </div>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
         `;
         listProduct.innerHTML += productCard;
